@@ -8,7 +8,7 @@ After this run the following:
 ```bash
 node server.js
 ```
-
+test if auto reject works
 ## File structure
 ```markdown
 ├── controllers
