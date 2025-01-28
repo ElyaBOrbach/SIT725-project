@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaderboard - WordMaster</title>
     <style>
-      table {
-          width: 100% !important;
-      }
-      td, th {
-          padding: 15px !important;
-      }
-      .scrollable-table {
-          width: 100%;
-      }
-      .welcome-card {
-          width: 1500px !important;
-          margin: 0 auto;
-          padding: 20px;
-      }
       .container {
-          width: 1800px !important;
-          max-width: none !important;
+        width: 100%;
+        max-width: 95%;
+        margin: auto;
       }
-  </style>
+
+      .welcome-card {
+        width: 100%;
+        max-width: 90%;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .scrollable-table {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 15px;
+        word-break: break-word;
+        white-space: nowrap;
+        text-align: center;
+      }
+    </style>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="

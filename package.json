@@ -4,7 +4,8 @@
   "description": "This is the ReadMe for our SIT725 project in trimester 3 2024.\r Mike cloned and pushed.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js" 
+    "test": "jest",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
