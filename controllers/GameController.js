@@ -357,53 +357,46 @@
     forceAIResponses() {
       const currentRound = this.gameSession.currentRound;
       const roundData = this.gameData.rounds[currentRound - 1];
-
+    
       if (!roundData) {
         console.error("No round data found for round:", currentRound);
         return;
       }
-
+    
       this.gameSession.ai_players.forEach(async (player) => {
         if (!player.scores[currentRound - 1]) {
           const aiResponse = roundData.answers[player.playerName];
-
+    
           if (!aiResponse) {
-            console.error(
-              "No AI response found for player:",
-              player.playerName
-            );
+            console.error("No AI response found for player:", player.playerName);
             return;
           }
-
-          // Get word count from the server
+    
           try {
-            const response = await fetch(
-              `/api/word/${this.gameSession.currentCategory}`
-            );
+            const response = await fetch(`/api/word/${this.gameSession.currentCategory}`);
             const data = await response.json();
             const wordData = data.data.find(
               (w) => w.word.toLowerCase() === aiResponse.word.toLowerCase()
             );
             const count = wordData ? wordData.count : 0;
-
+    
             // Calculate score using the same formula
             const calculatedScore = this.calculateScore(
               aiResponse.word,
               count,
               aiResponse.time
             );
-
-            console.log(
-              `AI ${player.playerName} score calculated:`,
-              calculatedScore
-            );
-
+    
+            console.log(`AI ${player.playerName} score calculated:`, calculatedScore);
+    
+            // Pass the calculated score to PlayerScore
             const aiScore = new window.PlayerScore(
               this.gameSession.currentCategory,
               aiResponse.word,
-              aiResponse.time
+              aiResponse.time,
+              calculatedScore  // Add the score here
             );
-
+    
             player.addScore(aiScore);
             this.scoreBoard.recordAIResponse(
               player.playerName,
@@ -416,7 +409,7 @@
           }
         }
       });
-
+    
       this.dispatchGameStateUpdate();
     }
     isValidWord(word, category) {
