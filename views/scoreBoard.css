@@ -109,7 +109,7 @@
 
 #scoreBoard #player {
   background: #4CAF50;
-  width: 60px;
+  width: 130px;
   min-height: 0;
   transition: height 1s ease-out;
 }
