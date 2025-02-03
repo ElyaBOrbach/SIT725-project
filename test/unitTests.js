@@ -18,6 +18,8 @@ module.exports = () => {
         //profilecontroller - FE
         //scoreboardcontroller - FE
         //usercontroller - BE
+        require('./userControllerTests')();
         //wordscontroller - BE
+        require('./wordControllerTest')();
     });
 }
